@@ -3341,7 +3341,21 @@ h5 {
 
 body {
   background: #eee;
-  text-align: center;
   padding: 25px;
   font-family: "SF Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.row {
+  padding: 8px 0;
+}
+.row:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+h4 {
+  margin-top: 0;
+}
+
+h3 {
+  margin-bottom: 0;
 }

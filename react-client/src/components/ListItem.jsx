@@ -9,11 +9,11 @@ class ListItem extends React.Component {
 	// }
 	render() {
 		return (
-			<div onClick={() => this.props.changeTrack(this.props.index)}>
-		  	<span className="ply_btn" ref={this.props.track.mps}>></span>
-		  	<span className="track_num">{this.props.track.position}</span>
-		  	<span className="track_name">{this.props.track.title}</span>
-		  	<span className="set">{this.props.track.set}</span>
+			<div className="row" onClick={() => this.props.changeTrack(this.props.index)}>
+		  	<span className="ply_btn col col-1-of-8" ref={this.props.track.mps}>></span>
+		  	<span className="track_num col col col-1-of-8">{this.props.track.position}</span>
+		  	<span className="track_name col col col-5-of-8">{this.props.track.title}</span>
+		  	<span className="set col col col-1-of-8">{this.props.track.set}</span>
 		  </div>
 		)
 	}
