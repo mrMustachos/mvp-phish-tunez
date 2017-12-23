@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 let port = 8008;
 
-app.listen(port, function() {
+app.listen(process.env.PORT || port, function() {
   console.log(`There's magic happening on ${port}!`);
 });
 
