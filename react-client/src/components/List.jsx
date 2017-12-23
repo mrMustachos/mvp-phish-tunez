@@ -21,7 +21,7 @@ class List extends React.Component {
 		// };
 	}
 	render() {
-		console.log(this.props.tracks)
+		// console.log(this.props.tracks)
 		return (
 			<div>
 				<hr/>
@@ -30,8 +30,7 @@ class List extends React.Component {
 					<h4 className="location">{ this.props.venue.location }</h4>
 					<p className="date">{ this.props.date }</p>
 				</div>
-				{
-					this.props.tracks.map((track, index) => {
+				{ this.props.tracks.map((track, index) => {
 						return (
 							<ListItem
 								key={ index }
