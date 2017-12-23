@@ -12,31 +12,19 @@ class App extends React.Component {
 		this.state = { 
 			items: {},
       playlist: [],
-      loaded: false
-      // playlist: [{ url: 'https://phish.in/audio/000/024/253/24253.mp3', displayText: 'Rock and Roll' }, { url: 'https://phish.in/audio/000/010/735/10735.mp3', displayText: 'The Lizards' }]
+      loaded: false,
+      count: 0
 		}
     this.changeTrack = this.changeTrack.bind(this);
 	}
 
 	componentWillMount() {
 		this.fetchSet();
-		// $.ajax({
-		// 	 url: '/items', 
-		// 	 success: (data) => {
-		// 		 this.setState({
-		// 			 items: data
-		// 		 })
-		// 	 },
-		// 	 error: (err) => {
-		// 		 console.log('err', err);
-		// 	 }
-		// });
 	}
 
   fetchSet() {
     axios.get('//phish.in/api/v1/random-show')
     .then((response) => {
-      // console.log(response.data.data)
       this.setState({
         items: response.data.data,
         loaded: true
@@ -60,10 +48,19 @@ class App extends React.Component {
       })
     });
   }
+  trackCount() {
+    this.setState({
+      count: ++this.state.count
+    }, () => {
+      console.log(this.state.count);
+      if (this.state.count === this.state.playlist.length - 1) {
+        this.fetchSet();
+      }
+    })
+  }
 
   changeTrack(idx) {
     const newPlayList = this.state.playlist.slice(idx);
-    // console.log(newPlayList)
     this.setState({
       playlist: newPlayList
     })
@@ -86,7 +83,7 @@ class App extends React.Component {
             hideForwardSkip={ false }
             autoplay={ false }
             onMediaEvent={{
-              ended: () => console.log('hi')
+              ended: () => this.trackCount()
             }}
           />
         </div>
