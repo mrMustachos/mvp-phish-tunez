@@ -16,12 +16,10 @@ import ListItem from './ListItem.jsx';
 class List extends React.Component {
 	constructor(props) {
 		super(props);
-		// this.state = {
-
-		// };
 	}
+
 	render() {
-		// console.log(this.props.tracks)
+		// console.log(this.props.changeTrack)
 		return (
 			<div>
 				<hr/>
@@ -34,7 +32,9 @@ class List extends React.Component {
 						return (
 							<ListItem
 								key={ index }
+								index={ index }
 								track={ track }
+								changeTrack={this.props.changeTrack}
 							/>
 						)
 					})

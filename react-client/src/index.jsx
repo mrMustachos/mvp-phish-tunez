@@ -15,6 +15,7 @@ class App extends React.Component {
       loaded: false
       // playlist: [{ url: 'https://phish.in/audio/000/024/253/24253.mp3', displayText: 'Rock and Roll' }, { url: 'https://phish.in/audio/000/010/735/10735.mp3', displayText: 'The Lizards' }]
 		}
+    this.changeTrack = this.changeTrack.bind(this);
 	}
 
 	componentWillMount() {
@@ -35,7 +36,7 @@ class App extends React.Component {
   fetchSet() {
     axios.get('http://phish.in/api/v1/random-show')
     .then((response) => {
-      console.log(response.data.data)
+      // console.log(response.data.data)
       this.setState({
         items: response.data.data,
         loaded: true
@@ -47,6 +48,7 @@ class App extends React.Component {
     .then((list) => {
       let obj = this.state.items.tracks;
       let playlist = [];
+
       obj.forEach(trackDeets => {
         let track = {};
         track.url = trackDeets.mp3;
@@ -59,6 +61,14 @@ class App extends React.Component {
     });
   }
 
+  changeTrack(idx) {
+    const newPlayList = this.state.playlist.slice(idx);
+    // console.log(newPlayList)
+    this.setState({
+      playlist: newPlayList
+    })
+  }
+
 	render () {
 		return (
       this.state.loaded ? (
@@ -68,6 +78,7 @@ class App extends React.Component {
             tracks={ this.state.items.tracks }
             date={ this.state.items.date }
             venue={ this.state.items.venue }
+            changeTrack={this.changeTrack}
           />
           <AudioPlayer
             playlist={ this.state.playlist }

@@ -4,14 +4,13 @@ class ListItem extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	getTrack(event) {
-		event.preventDefault();
-		console.log(link)
-	}
+	// handleClick(e) {
+	// 	console.log(e.target.index);
+	// }
 	render() {
 		return (
-			<div>
-		  	<span className="ply_btn" ref={this.props.track.mps} onClick={() => getTrack(this.props.track.mps)()}>></span>
+			<div onClick={() => this.props.changeTrack(this.props.index)}>
+		  	<span className="ply_btn" ref={this.props.track.mps}>></span>
 		  	<span className="track_num">{this.props.track.position}</span>
 		  	<span className="track_name">{this.props.track.title}</span>
 		  	<span className="set">{this.props.track.set}</span>
