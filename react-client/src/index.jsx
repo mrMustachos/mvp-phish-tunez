@@ -34,7 +34,7 @@ class App extends React.Component {
 	}
 
   fetchSet() {
-    axios.get('http://phish.in/api/v1/random-show')
+    axios.get('//phish.in/api/v1/random-show')
     .then((response) => {
       // console.log(response.data.data)
       this.setState({
